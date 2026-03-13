@@ -4,6 +4,7 @@
   - [例一：第一个VBA程序 - 弹窗](#例一第一个vba程序---弹窗)
   - [例二：变量定义与单元格赋值 - 公司销售信息](#例二变量定义与单元格赋值---公司销售信息)
   - [例三：IF判断 - 成绩判断](#例三if判断---成绩判断)
+  - [例四：Select Case - 多路径选择改造“成绩判断”](#例四select-case---多路径选择改造成绩判断)
   - [例五：for循环](#例五for循环)
 
 ## 例一：第一个VBA程序 - 弹窗
@@ -85,6 +86,22 @@ Sub clearCheck()
         Cells(rowNumber, 3).Interior.Color = RGB(255, 255, 255)
     Next rowNumber
 End Sub
+```
+
+## 例四：Select Case - 多路径选择改造“成绩判断”
+
+语法结构为：
+
+```VB
+Select Csae variable
+  Case condition1
+    statement1
+  Case condition2
+    statement2
+  ...
+  Case Else
+    statement-x
+End Select
 ```
 
 ## 例五：for循环
