@@ -7,6 +7,7 @@
   - [例四：Select Case - 多路径选择改造“成绩判断”](#例四select-case---多路径选择改造成绩判断)
   - [例五：for循环](#例五for循环)
   - [例六：For Each循环 - 批量管理](#例六for-each循环---批量管理)
+  - [例七：自定义函数](#例七自定义函数)
 
 ## 例一：第一个VBA程序 - 弹窗
 
@@ -197,4 +198,27 @@ End Sub
 ```
 
 ## 例六：For Each循环 - 批量管理
+
+给工作簿里所有工作表的标签统一“上色”。
+
+通过`For Each ... In ...`来遍历集合对象（如本例中的所有工作表）
+
+![06](img/06.png)
+
+源代码：
+
+```VB
+Sub setSheetColor()
+    Dim mySheet As Worksheet
+    For Each mySheet In ThisWorkbook.Worksheets
+        mySheet.Tab.Color = RGB(15, 157, 88) 'Google Green Brand Color
+    Next mySheet
+End Sub
+```
+
+参考：[Google品牌绿色代码](https://www.colorxs.com/color/google-green)
+
+## 例七：自定义函数
+
+创建计算个人所得税的简易计算器
 
