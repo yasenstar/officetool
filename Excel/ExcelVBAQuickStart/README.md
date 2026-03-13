@@ -41,6 +41,8 @@ VBA中变量声名的语法是：`Dim ... As ...`。
 
 ![02_code](img/02_code.png)
 
+源代码：
+
 ```VB
 <!-- Sheet1: (General).companyrevenue -->
 Sub companyrevenue()
@@ -61,6 +63,8 @@ End Sub
 ![03_1](img/03_1.png)
 
 ![03_2](img/03_2.png)
+
+源代码：
 
 ```VB
 Sub scoreCheck()
@@ -102,6 +106,42 @@ Select Csae variable
   Case Else
     statement-x
 End Select
+```
+
+![04](img/04.png)
+
+源代码：
+
+```VB
+Sub scoreCheck()
+    Dim rowNumber As Integer
+    Dim score As Integer
+    For rowNumber = 2 To 21
+        score = Cells(rowNumber, 2).Value
+        Select Case score
+            Case Is >= 90
+                Cells(rowNumber, 3).Value = "优秀"
+                Cells(rowNumber, 3).Interior.Color = RGB(0, 255, 0)
+            Case 80 To 89
+                Cells(rowNumber, 3).Value = "良好"
+                Cells(rowNumber, 3).Interior.Color = RGB(255, 255, 0)
+            Case 60 To 79
+                Cells(rowNumber, 3).Value = "及格"
+                Cells(rowNumber, 3).Interior.Color = RGB(255, 128, 128)
+            Case Else
+                Cells(rowNumber, 3).Value = "不及格"
+                Cells(rowNumber, 3).Interior.Color = RGB(255, 0, 0)
+        End Select
+    Next rowNumber
+End Sub
+
+Sub clearCheck()
+    Dim rowNumber As Integer
+    For rowNumber = 2 To 21
+        Cells(rowNumber, 3).Value = ""
+        Cells(rowNumber, 3).Interior.Color = RGB(255, 255, 255)
+    Next rowNumber
+End Sub
 ```
 
 ## 例五：for循环
