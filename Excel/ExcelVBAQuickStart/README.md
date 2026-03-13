@@ -6,6 +6,7 @@
   - [例三：IF判断 - 成绩判断](#例三if判断---成绩判断)
   - [例四：Select Case - 多路径选择改造“成绩判断”](#例四select-case---多路径选择改造成绩判断)
   - [例五：for循环](#例五for循环)
+  - [例六：For Each循环 - 批量管理](#例六for-each循环---批量管理)
 
 ## 例一：第一个VBA程序 - 弹窗
 
@@ -147,3 +148,53 @@ End Sub
 ## 例五：for循环
 
 语法：`For i = 1 to 1000 ... Next i`
+
+![05](img/05.png)
+
+源代码：
+
+```VB
+Sub stuList1()
+    Dim i As Integer
+    Cells(1, 1).Value = "学生列表1"
+    For i = 1 To 20
+        Cells(i + 1, 1).Value = i
+    Next i
+End Sub
+
+Sub stuList2()
+    Dim i As Integer
+    Cells(1, 2).Value = "学生列表2"
+    For i = 1 To 20 Step 2
+        Cells(i + 1, 2).Value = i
+    Next i
+End Sub
+
+Sub stuList3()
+    Dim i As Integer
+    Cells(1, 3).Value = "学生列表3"
+    For i = 1 To 20
+        Cells(i + 1, 3).Value = i
+        i = i + 2
+    Next i
+End Sub
+
+Sub stuList4()
+    Dim i As Integer
+    Cells(1, 4).Value = "学生列表4"
+    For i = 1 To 20
+        Cells(i + 1, 4).Value = i * 2
+    Next i
+End Sub
+
+Sub randomNum()
+    Dim i As Integer
+    Cells(1, 5).Value = "随机数"
+    For i = 1 To 20
+        Cells(i + 1, 5).Value = Round(Rnd(1) * 100, 0)
+    Next i
+End Sub
+```
+
+## 例六：For Each循环 - 批量管理
+
