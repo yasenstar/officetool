@@ -55,7 +55,37 @@ End Sub
 
 ## 例三：IF判断 - 成绩判断
 
+使用`=ROUND(RAND()*100,0)`可以产生0到100之间的随机整数。
 
+![03_1](img/03_1.png)
+
+![03_2](img/03_2.png)
+
+```VB
+Sub scoreCheck()
+    Dim rowNumber As Integer
+    For rowNumber = 2 To 21
+        If Cells(rowNumber, 2).Value >= 90 Then
+            Cells(rowNumber, 3).Value = "优秀"
+            Cells(rowNumber, 3).Interior.Color = RGB(0, 255, 0)
+        ElseIf Cells(rowNumber, 2).Value >= 60 Then
+            Cells(rowNumber, 3).Value = "及格"
+            Cells(rowNumber, 3).Interior.Color = RGB(255, 255, 0)
+        Else
+            Cells(rowNumber, 3).Value = "不及格"
+            Cells(rowNumber, 3).Interior.Color = RGB(255, 0, 0)
+        End If
+    Next rowNumber
+End Sub
+
+Sub clearCheck()
+    Dim rowNumber As Integer
+    For rowNumber = 2 To 21
+        Cells(rowNumber, 3).Value = ""
+        Cells(rowNumber, 3).Interior.Color = RGB(255, 255, 255)
+    Next rowNumber
+End Sub
+```
 
 ## 例五：for循环
 
