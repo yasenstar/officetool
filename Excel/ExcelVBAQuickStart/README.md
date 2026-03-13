@@ -94,7 +94,7 @@ End Sub
 
 ```VB
 Select Csae variable
-  Case condition1
+  Case Is condition1
     statement1
   Case condition2
     statement2
