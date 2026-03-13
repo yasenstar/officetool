@@ -222,3 +222,21 @@ End Sub
 
 创建计算个人所得税的简易计算器
 
+![07](img/07.png)
+
+源代码：
+
+```VB
+Function Ptax(income As Double) As Double
+    If income <= 8000 Then
+        Ptax = 0
+    Else
+        Ptax = (income - 8000) * 0.15
+    End If
+End Function
+
+Function finalPrice(unitPrice As Double, quantity As Integer, discount As Double) As Double
+    finalPrice = unitPrice * quantity * discount
+End Function
+```
+
