@@ -36,6 +36,23 @@ VBA中变量声名的语法是：`Dim ... As ...`。
 1. `Range("A1")`
 2. `Cells(1,1).value`
 
+![02_result](img/02_result.png)
+
+![02_code](img/02_code.png)
+
+```VB
+<!-- Sheet1: (General).companyrevenue -->
+Sub companyrevenue()
+    Dim company As String
+    Dim renuew As Integer
+    company = "ÎÒµÄ¹«Ë¾"
+    revenue = 560000
+    Range("B1:B2") = company
+    Cells(2, 3).Value = revenue
+    Cells(2, 4).Value = revenue * 2
+End Sub
+```
+
 ## 例三：IF判断 - 成绩判断
 
 
