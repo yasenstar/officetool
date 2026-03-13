@@ -8,6 +8,9 @@
   - [例五：for循环](#例五for循环)
   - [例六：For Each循环 - 批量管理](#例六for-each循环---批量管理)
   - [例七：自定义函数](#例七自定义函数)
+  - [例八：过程调用与程序模块化](#例八过程调用与程序模块化)
+  - [例九：使用With语句优化代码](#例九使用with语句优化代码)
+  - [例十：整合案例 - 生成节日值班表](#例十整合案例---生成节日值班表)
 
 ## 例一：第一个VBA程序 - 弹窗
 
@@ -240,3 +243,8 @@ Function finalPrice(unitPrice As Double, quantity As Integer, discount As Double
 End Function
 ```
 
+## 例八：过程调用与程序模块化
+
+## 例九：使用With语句优化代码
+
+## 例十：整合案例 - 生成节日值班表
