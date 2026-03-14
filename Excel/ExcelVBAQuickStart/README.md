@@ -1,5 +1,7 @@
 # 10个案例快速上手Excel VBA
 
+<meta charset="UTF-8">
+
 - [10个案例快速上手Excel VBA](#10个案例快速上手excel-vba)
   - [例一：第一个VBA程序 - 弹窗](#例一第一个vba程序---弹窗)
   - [例二：变量定义与单元格赋值 - 公司销售信息](#例二变量定义与单元格赋值---公司销售信息)
@@ -449,32 +451,32 @@ End Sub
 
 源代码：
 
-```VB
-Sub Éú³É½ÚÈÕÖµ°à±í()
-    Call ³õÊ¼»¯±í¸ñ
-    Call Ìî³ä½ÚÈÕÈÕÆÚ
-    Call °²ÅÅÖµ°àÈËÔ±
-    Call ±í¸ñÃÀ»¯
+```VB.Net
+Sub 生成节日值班表()
+    Call 初始化表格
+    Call 填充节日日期
+    Call 安排值班人员
+    Call 表格美化
     
-    MsgBox "½ÚÈÕÖµ°à±íÉú³ÉÍê±Ï£¡", vbInformation
+    MsgBox "节日值班表生成完毕！", vbInformation
 
 End Sub
 
-Sub ³õÊ¼»¯±í¸ñ()
+Sub 初始化表格()
     Cells.Clear
     
     With Range("A1:D1")
-        .Value = Array("ÈÕÆÚ", "Å©Àú/½ÚÈÕ", "Öµ°àÈËÔ±", "±¸×¢")
+        .Value = Array("日期", "农历/节日", "值班人员", "备注")
         .Font.Bold = True
     End With
     
 
 End Sub
 
-Sub Ìî³ä½ÚÈÕÈÕÆÚ()
+Sub 填充节日日期()
     Dim festival() As Variant
-    '2026ÄêµÄ³ýÏ¦ÊÇ2ÔÂ16ÈÕ
-    festival = Array("³ýÏ¦", "³õÒ»", "³õ¶þ", "³õÈý", "³õËÄ", "³õÎå", "³õÁù", "³õÆß")
+    '2026年的除夕是2月16日
+    festival = Array("除夕", "初一", "初二", "初三", "初四", "初五", "初六", "初七")
     
     Dim i As Integer
     For i = 0 To 7
@@ -486,9 +488,9 @@ Sub Ìî³ä½ÚÈÕÈÕÆÚ()
 
 End Sub
 
-Sub °²ÅÅÖµ°àÈËÔ±()
+Sub 安排值班人员()
     Dim staff() As Variant
-    staff = Array("ÕÅÈý", "ÀîËÄ", "ÍõÎå", "ÕÔÁù", "Ç®Æß", "Ëï°Ë", "ÖÜ¾Å", "ÎâÊ®")
+    staff = Array("张三", "李四", "王五", "赵六", "钱七", "孙八", "周九", "吴十")
     
     Dim i As Integer, temp As String, rndIndex As Integer
     
@@ -503,17 +505,17 @@ Sub °²ÅÅÖµ°àÈËÔ±()
     
     For i = 0 To 7
         Cells(i + 2, 3).Value = staff(i)
-        Cells(i + 2, 4).Value = "È«ÌìÖµÊØ"
+        Cells(i + 2, 4).Value = "全天值守"
     Next i
     
 End Sub
 
-Sub ±í¸ñÃÀ»¯()
+Sub 表格美化()
 
     Dim rng As Range
     Set rng = Range("A1:D9")
     
-    '1. ¼ÓÕûÌå±ß¿ò
+    '1. 加整体边框
     With rng.Borders
         .LineStyle = xlContinuous
         .Weight = xlThick
@@ -521,13 +523,13 @@ Sub ±í¸ñÃÀ»¯()
         .ColorIndex = 10
     End With
     
-    '2. ±íÍ·Ìí¼Ó±³¾°ÑÕÉ«
+    '2. 表头添加背景颜色
     With Range("A1:D1")
         .Interior.Color = RGB(255, 192, 0)
         .HorizontalAlignment = xlCenter
     End With
     
-    '3. ÄÚÈÝ¶ÔÆëÓëÐÐ¸ß
+    '3. 内容对齐与行高
     With rng
         .HorizontalAlignment = xlCenter
         .VerticalAlignment = xlCenter
@@ -535,7 +537,7 @@ Sub ±í¸ñÃÀ»¯()
     Rows("1:9").RowHeight = 25
     Columns("A:D").AutoFit
     
-    '4. Í»³öÏÔÊ¾´º½Ú³õÒ»µ±Ìì
+    '4. 突出显示春节初一当天
     With Range("A3:D3")
         .Interior.Color = RGB(255, 235, 235)
         .Font.Color = vbRed
