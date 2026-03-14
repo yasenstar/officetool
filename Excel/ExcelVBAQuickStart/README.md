@@ -445,6 +445,107 @@ End Sub
 
 第二部分：
 
+![10_2](img/10_2.png)
+
+源代码：
+
+```VB
+Sub Éú³É½ÚÈÕÖµ°à±í()
+    Call ³õÊ¼»¯±í¸ñ
+    Call Ìî³ä½ÚÈÕÈÕÆÚ
+    Call °²ÅÅÖµ°àÈËÔ±
+    Call ±í¸ñÃÀ»¯
+    
+    MsgBox "½ÚÈÕÖµ°à±íÉú³ÉÍê±Ï£¡", vbInformation
+
+End Sub
+
+Sub ³õÊ¼»¯±í¸ñ()
+    Cells.Clear
+    
+    With Range("A1:D1")
+        .Value = Array("ÈÕÆÚ", "Å©Àú/½ÚÈÕ", "Öµ°àÈËÔ±", "±¸×¢")
+        .Font.Bold = True
+    End With
+    
+
+End Sub
+
+Sub Ìî³ä½ÚÈÕÈÕÆÚ()
+    Dim festival() As Variant
+    '2026ÄêµÄ³ýÏ¦ÊÇ2ÔÂ16ÈÕ
+    festival = Array("³ýÏ¦", "³õÒ»", "³õ¶þ", "³õÈý", "³õËÄ", "³õÎå", "³õÁù", "³õÆß")
+    
+    Dim i As Integer
+    For i = 0 To 7
+        Cells(i + 2, 1).Value = DateSerial(2026, 2, 16 + i)
+        Cells(i + 2, 2).Value = festival(i)
+    Next i
+    
+    Range("A2:A9").NumberFormatLocal = "yyyy/mm/dd (aaaa)"
+
+End Sub
+
+Sub °²ÅÅÖµ°àÈËÔ±()
+    Dim staff() As Variant
+    staff = Array("ÕÅÈý", "ÀîËÄ", "ÍõÎå", "ÕÔÁù", "Ç®Æß", "Ëï°Ë", "ÖÜ¾Å", "ÎâÊ®")
+    
+    Dim i As Integer, temp As String, rndIndex As Integer
+    
+    Randomize
+    
+    For i = 0 To UBound(staff)
+        rndIndex = Int((UBound(staff) + 1) * Rnd)
+        temp = staff(i)
+        staff(i) = staff(rndIndex)
+        staff(rndIndex) = temp
+    Next i
+    
+    For i = 0 To 7
+        Cells(i + 2, 3).Value = staff(i)
+        Cells(i + 2, 4).Value = "È«ÌìÖµÊØ"
+    Next i
+    
+End Sub
+
+Sub ±í¸ñÃÀ»¯()
+
+    Dim rng As Range
+    Set rng = Range("A1:D9")
+    
+    '1. ¼ÓÕûÌå±ß¿ò
+    With rng.Borders
+        .LineStyle = xlContinuous
+        .Weight = xlThick
+        '.Color = RGB(0, 0, 255)
+        .ColorIndex = 10
+    End With
+    
+    '2. ±íÍ·Ìí¼Ó±³¾°ÑÕÉ«
+    With Range("A1:D1")
+        .Interior.Color = RGB(255, 192, 0)
+        .HorizontalAlignment = xlCenter
+    End With
+    
+    '3. ÄÚÈÝ¶ÔÆëÓëÐÐ¸ß
+    With rng
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+    End With
+    Rows("1:9").RowHeight = 25
+    Columns("A:D").AutoFit
+    
+    '4. Í»³öÏÔÊ¾´º½Ú³õÒ»µ±Ìì
+    With Range("A3:D3")
+        .Interior.Color = RGB(255, 235, 235)
+        .Font.Color = vbRed
+        .Font.Bold = True
+        .Font.Italic = True
+    End With
+
+End Sub
+```
+
 ---
 
 Updated as 3/14/2026 By [Xiaoqi Zhao](mailto:xiaoqizhao@outlook.com)
