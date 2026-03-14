@@ -391,3 +391,60 @@ End Sub
 
 ## 例十：整合案例 - 生成节日值班表
 
+第一部分：
+
+![10_1](img/10_1.png)
+
+源代码：
+
+```VB
+Sub 生成节日值班表()
+    Call 初始化表格
+    Call 填充节日日期
+    Call 安排值班人员
+    Call 表格美化
+    
+    MsgBox "节日值班表生成完毕！", vbInformation
+
+End Sub
+
+Sub 初始化表格()
+    Cells.Clear
+    
+    With Range("A1:D1")
+        .Value = Array("日期", "农历/节日", "值班人员", "备注")
+        .Font.Bold = True
+    End With
+    
+
+End Sub
+
+Sub 填充节日日期()
+    Dim festival() As Variant
+    '2026年的除夕是2月16日
+    festival = Array("除夕", "初一", "初二", "初三", "初四", "初五", "初六", "初七")
+    
+    Dim i As Integer
+    For i = 0 To 7
+        Cells(i + 2, 1).Value = DateSerial(2026, 2, 16 + i)
+        Cells(i + 2, 2).Value = festival(i)
+    Next i
+    
+    Range("A2:A9").NumberFormatLocal = "yyyy/mm/dd (aaaa)"
+
+End Sub
+
+Sub 安排值班人员()
+
+End Sub
+
+Sub 表格美化()
+
+End Sub
+```
+
+第二部分：
+
+---
+
+Updated as 3/14/2026 By [Xiaoqi Zhao](mailto:xiaoqizhao@outlook.com)
