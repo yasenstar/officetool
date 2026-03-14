@@ -365,4 +365,29 @@ End Sub
 
 ## 例九：使用With语句优化代码
 
+![09](img/09.png)
+
+源代码：
+
+```VB
+Sub formatting()
+    'Range("A1:B1").Font.Size = 14
+    'Range("A1:B1").Font.Bold = True
+    
+    With Range("A1:B1").Font
+        .Size = 20
+        .Bold = False
+        .Name = "Î¢ÈíÑÅºÚ"
+        .Color = RGB(128, 128, 128)
+    End With
+    
+    With Range("A2:B10").Interior
+        .Color = RGB(31, 255, 120)
+        .Pattern = xlSolid
+    End With
+    
+End Sub
+```
+
 ## 例十：整合案例 - 生成节日值班表
+
