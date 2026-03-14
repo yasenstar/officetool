@@ -254,7 +254,51 @@ End Function
 
 每个模块通过`Sub`过程完成编程封装，通过总控过程自动化调用。
 
+第一部分：
 
+![08_1](img/08_1.png)
+
+源代码：
+
+```VB
+Sub 日报自动化()
+    Call 清空旧数据
+    Call 导入新数据
+    Call 计算核心指标
+End Sub
+
+
+Sub 清空旧数据()
+    'Sheets("数据源").UsedRange.Offset(1, 0).ClearContents
+    Sheets("数据源").UsedRange.ClearContents
+    Sheets("汇总表").UsedRange.ClearContents
+End Sub
+
+Sub 导入新数据()
+    Dim ws As Worksheet
+    Set ws = Sheets("数据源")
+    With ws.QueryTables.Add(Connection:="TEXT;" & ThisWorkbook.Path & "\data.csv", Destination:=ws.Range("A1"))
+        .TextFileParseType = xlDelimited
+        .TextFileCommaDelimiter = True
+        .Refresh
+    End With
+End Sub
+
+Sub 计算核心指标()
+    Dim ws As Worksheet
+    Set ws = Sheets("汇总表")
+    ws.Range("A1").Value = Application.WorksheetFunction.Sum(Sheets("数据源").Columns("B"))
+End Sub
+```
+
+第二部分：
+
+![08_2]()
+
+源代码：
+
+```VB
+```
 
 ## 例九：使用With语句优化代码
 
