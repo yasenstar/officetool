@@ -7,7 +7,7 @@
 
 | 课程文档 | Udemy课程 |
 | --- | --- |
-| [VBA快速上手](Excel/ExcelVBAQuickStart/) | |
+| [VBA快速上手](Excel/ExcelVBAQuickStart/) | [<img src="Excel/ExcelVBAQuickStart/img/ExcelVBAQuickStart/Slide16_vertical.png" alt="course cover" width="200">](https://www.udemy.com/course/excel-vba-quick-start/?referralCode=617E174223960FBC4EE8)|
 
 ---
 
